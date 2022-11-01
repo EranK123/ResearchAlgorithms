@@ -6,6 +6,10 @@ def safe_call(func, x, y, z):
         Traceback (most recent call last):
             ...
         Exception: Wrong Type
+        >>> safe_call(f1,x=3,y=5,z=32)
+        Traceback (most recent call last):
+            ...
+        Exception: Wrong Type
         >>> safe_call(f2, x="a", y="dwa", z="abc")
         'adwaabc'
         >>> safe_call(f2, x=2, y="dwa", z=2)
@@ -33,6 +37,7 @@ def f2(x, y: str, z: str):
     return x + y + z
 
 
+# running examples
 print(safe_call(f1, x=5, y=2.0, z=3))
 print(safe_call(f2, x="da", y="abc", z="3"))
 

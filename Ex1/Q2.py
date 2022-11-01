@@ -13,7 +13,7 @@ def breadth_first_search(start, end, neighbor_function):
         m = queue.pop(0)
         if m == end:
             return print_path(visited, start, end)  # return the path of all nodes
-        neighbours = neighbor_function(m)  # get all the neighbors
+        neighbours = neighbor_function(m)  # get all the neighbors from neighbors function
         for neighbour in neighbours:
             if m not in queue:  # check which is not visited and update
                 visited[neighbour] = m
@@ -58,6 +58,7 @@ graph = {
     '8': []
 }
 
+# running examples
 print(breadth_first_search(start=(0, 0), end=(2, 2), neighbor_function=four_neighbor_function))
 print(breadth_first_search(start=0, end=10, neighbor_function=two_neighbor_function))
 print(breadth_first_search(start='5', end='8', neighbor_function=graph_neighbor))
