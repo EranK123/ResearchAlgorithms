@@ -47,7 +47,7 @@ print(safe_call(f1, x=5, y=2.0, z=3))
 print(safe_call(f2, x="da", y="abc", z="3"))
 print(safe_call(f3, x=3, y=2.1))
 
-# if __name__ == "__main__":
-#     import doctest
-#
-#     print(doctest.testmod())
+if __name__ == "__main__":
+    import doctest
+
+    print(doctest.testmod())
