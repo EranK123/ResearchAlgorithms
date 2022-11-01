@@ -21,12 +21,12 @@ def breadth_first_search(start, end, neighbor_function):
 
 
 # this function prints the path of the bfs search
-def print_path(parent, s, e):
-    path = [e]
-    while path[-1] != s:
-        path.append(parent[path[-1]])
-    path.reverse()
-    return path
+def print_path(p, start, end):
+    path_list = [end]
+    while path_list[-1] != start:
+        path_list.append(p[path_list[-1]])
+    path_list.reverse()
+    return path_list
 
 
 # this function gets the neighbors of a 2d point
