@@ -1,4 +1,4 @@
-def safe_call(func, **kwargs):
+def safe_call(func, **kwargs):  # we use kwargs because we dont know how many arguments will be passed
     """
         >>> safe_call(f1,x=5,y=7.0,z=3)
         15.0
