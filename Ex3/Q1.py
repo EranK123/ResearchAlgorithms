@@ -4,6 +4,18 @@ regex = r'\b([A-Za-z0-9]+([A-Za-z0-9][._-][[A-Za-z0-9])*[A-Za-z0-9]*)+@+([A-Za-z
 
 
 def check_valid(email):
+    """
+    >>> check_valid("ac.da@gmail.com")
+    True
+    >>> check_valid("ac%a@gmail.com")
+    False
+    >>> check_valid("ac..a@gmail.cm")
+    False
+    >>> check_valid("aca@gmail..cm")
+    False
+    >>> check_valid("aca-a@gmail.cm")
+    True
+    """
     if re.fullmatch(regex, email):  # check if the emails match
         return True
     else:
@@ -27,3 +39,7 @@ def print_emails(file):
         print("                     " + e[:-1])
 
 print_emails("emails")
+
+if __name__ == "__main__":
+    import doctest
+    print(doctest.testmod())
