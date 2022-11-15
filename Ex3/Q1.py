@@ -28,7 +28,7 @@ def print_emails(file):
     with open(file, 'r') as f:  # open the text file of the emails
         lines = f.readlines()  # read each email and check if its valid or not
         for line in lines:
-            if check_valid(line[:-1]):
+            if check_valid(line[:-1]):  # [:-1] because of "\n"
                 valid_emails.append(line)
             else:
                 invalid_emails.append(line)
@@ -38,8 +38,10 @@ def print_emails(file):
     for e in invalid_emails:
         print("                     " + e[:-1])
 
+
 print_emails("emails")
 
 if __name__ == "__main__":
     import doctest
+
     print(doctest.testmod())
