@@ -25,7 +25,7 @@ def lastcall(func, mem={}):
         kwarg_values = []
         for value in kwargs.values():  # deals with kwargs
             kwarg_values.append(value)
-        if tuple(kwarg_values) not in mem[func] and len(kwarg_values) != 0:
+        if tuple(kwarg_values) not in mem[func] and len(kwarg_values) != 0:  # check if kwargs values are in the dict # of the func
             mem[func].append(tuple(kwarg_values))
             return str(val)
         if args not in mem[func] and len(args) != 0:  # if its a new value we add it to mem and return
