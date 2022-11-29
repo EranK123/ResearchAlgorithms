@@ -19,7 +19,7 @@ graph2 = {0: [(0, 0), (1, 5), (2, math.inf), (3, math.inf)],
           }
 
 
-def same_look(graph :dict):
+def same_look(graph: dict):
     """
     this function gets a graph and if the graph is a dictionary it turns it to a matrix. in this way the algo can accepts two ways of input
     """
@@ -151,6 +151,7 @@ def change_to_inf(graph):
 
 if __name__ == "__main__":
     import doctest
+
     print(doctest.testmod())
     print(path_algo(algorithm=dijkstra, items=graph1, src=0, outputtype=Output.dist_from_source))
     print(path_algo(algorithm=dijkstra, items=graph1, src=0, outputtype=Output.sum))

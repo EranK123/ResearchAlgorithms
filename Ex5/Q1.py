@@ -19,19 +19,6 @@ def bounded_subsets(bound_set, val, mem=[]):
                     yield list(comb)  # will remember the last comb
 
 
-# ===================== Q1.b ================== #
-
-# def ordered_bounded_subsets(bound_set, val, mem=[]):
-#     var = None
-#     for i in range(len(bound_set) + 1):
-#         for j in range(0, len(bound_set) - i - 1):
-#          var = [(comb1, comb2) for comb1 in itertools.combinations(bound_set, i) for comb2 in
-#                 itertools.combinations(bound_set, j)]
-#         print(var)
-
-# for s in ordered_bounded_subsets([1, 2, 3], 4):
-#     print(s)
-
 if __name__ == "__main__":
     import doctest
 
