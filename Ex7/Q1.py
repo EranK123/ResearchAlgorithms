@@ -3,9 +3,8 @@ import time
 import math
 import random
 import matplotlib.pyplot as plt
+import cvxpy as cp
 
-
-# import cvxpy as cp
 
 def generate_linear_equations():
     k = np.random.randint(2, 15)
@@ -26,6 +25,7 @@ def numpyu_sol():
     for s, v in zip(symbols, variables):
         print(f'{s} = {v}')
 
+
 def cvxpy_sol():
     pass
 
@@ -37,21 +37,21 @@ def time_calculation():
         t1 = time.time()
         solution = coeffs.dot(variables)
         t2 = time.time() - t1
-        t[k*k] = t2
+        t[k * k] = t2
     return t
 
 
-def plot(t : dict):
+def plot(t: dict):
     xis = list(i for i in t.keys())
     yis = list(i for i in t.values())
     print(xis, yis)
-    plt.plot(xis, yis,'r')
+    plt.plot(xis, yis, 'r')
     plt.xlabel("Size")
     plt.ylabel("Time")
     plt.title("numpy Vs cvxpy")
     plt.show()
 
-plot(time_calculation())
 
+plot(time_calculation())
 
 # numpyu_sol()
