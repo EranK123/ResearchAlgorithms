@@ -19,18 +19,18 @@ def plot_approx():
     values = {}
     max_clique = -1
     ns = set()
-    for i in range(20):
+    for i in range(20):  # generate 20 random sized vertices
         ns.add(np.random.randint(2, 20))
-    for p in range(10):
+    for p in range(10):  # run for 10 different probabilities
         prb = np.random.random()
         values[prb] = []
-        for n in ns:
-            graph = nx.gnp_random_graph(n, prb, seed=None, directed=False)
-            maximum_clique = list(cq.max_clique(graph))
+        for n in ns:  # for each size
+            graph = nx.gnp_random_graph(n, prb, seed=None, directed=False)  # build a random gnp graph
+            maximum_clique = list(cq.max_clique(graph))  # get the maxmimum clique the approx algo returns
             for clique in nx.find_cliques(graph):
-                max_clique = max(max_clique, len(clique))
-            values[prb].append(len(maximum_clique) / max_clique)
-    for prob in values.keys():
+                max_clique = max(max_clique, len(clique))  # get the exact maxmimal clique in the graph
+            values[prb].append(len(maximum_clique) / max_clique)  # for each probability append the approximation ratio
+    for prob in values.keys():  # plot the graph where the xis are the number of vertices, yis is the approximation ratio for each probability
         xis = list(k for k in ns)
         yis = values[prob]
         plt.xlabel("Size")
@@ -43,6 +43,6 @@ def plot_approx():
 
 
 """
-The approximation is better when the number of vertices gets bigger
+The approximation algo is better when the number of vertices gets bigger
 """
 plot_approx()
