@@ -13,32 +13,36 @@ Finds the $O(|V|/(log|V|)^2)$ apx of maximum clique/independent set
     to the subgraph).
 """
 
-graph = nx.gnp_random_graph(np.random.randint(2, 20), np.random.random(), seed=None, directed=False)
-print(graph)
-print(list(cq.max_clique(graph)))
-print("------------------------")
-for i in nx.find_cliques(graph):
-    print(i)
 
 def plot_approx():
+    idx = 1
     values = {}
-    max_clique = []
+    max_clique = -1
+    ns = set()
     for i in range(20):
-        p = np.random.random()
-        n = np.random.randint(2, 20)
-        graph = nx.gnp_random_graph(n, p, seed=None, directed=False)
-        maxmimum_clique = list(cq.max_clique(graph))
-        for i in nx.find_cliques(graph):
-            if len(i) == len(maxmimum_clique):
-                break
-        values[n] = p
-    xis = list(i for i in values.keys())
-    yis = list(i for i in values.values())
-    print(xis, yis)
-    plt.plot(xis, yis, 'r')
-    plt.xlabel("Size")
-    plt.ylabel("Probability")
-    plt.title("Approx vs Exact")
+        ns.add(np.random.randint(2, 20))
+    for p in range(10):
+        prb = np.random.random()
+        values[prb] = []
+        for n in ns:
+            graph = nx.gnp_random_graph(n, prb, seed=None, directed=False)
+            maximum_clique = list(cq.max_clique(graph))
+            for clique in nx.find_cliques(graph):
+                max_clique = max(max_clique, len(clique))
+            values[prb].append(len(maximum_clique) / max_clique)
+    for prob in values.keys():
+        xis = list(k for k in ns)
+        yis = values[prob]
+        plt.xlabel("Size")
+        plt.ylabel("Approximation")
+        plt.title(f"p :{round(prob, 5)}", fontsize=10)
+        plt.subplot(3, 5, idx)
+        idx += 1
+        plt.plot(xis, yis, 'r')
     plt.show()
 
+
+"""
+The approximation is better when the number of vertices gets bigger
+"""
 plot_approx()
