@@ -1,3 +1,5 @@
+import math
+
 import networkx as nx
 import numpy as np
 import networkx.algorithms.approximation.clique as cq
@@ -39,6 +41,8 @@ def plot_approx():
         plt.subplot(3, 5, idx)
         idx += 1
         plt.plot(xis, yis, 'r')
+        th_approx = list(k / math.log2(k) ** 2 for k in ns)  # calc the theoretic approx
+        print(f"Differences Approximation{np.array(values[prob]) - np.array(th_approx)}")
     plt.show()
 
 
